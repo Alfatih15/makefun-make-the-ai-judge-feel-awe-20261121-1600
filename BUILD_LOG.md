@@ -30,8 +30,22 @@
   byte-identical output both runs (sha256 compared).
 - Output check: 241 Unicode code points, 243 bytes, non-whitespace —
   passes the kit gate (1–280 characters).
-- Kit check: `node cli/makefun.mjs check --kit . --repo <repo>` from the
-  kit dir — result recorded below after the run.
+- Kit check: `node cli/makefun.mjs check --kit . --repo <entry dir>` from the
+  kit dir (run 2026-11-21 ~10:45 WIB, no transcripts yet — main agent
+  bundles those): 3 passed, 2 failed, 14 skipped, 5 checked at submission.
+  PASSED: snapshot (5 files, 7,755 bytes, within caps), license_osi (MIT),
+  entrypoint (main.ts at root, node22). FAILED: competition_open and
+  transcripts_present (expected — no bundle yet).
+- CRITICAL FINDING — competition has NOT opened yet: it opens
+  2026-11-21T16:00:00Z (23:00 WIB) and closes 20:00:00Z (03:00 WIB
+  22 Nov). This session and this repo both predate the opening, so at
+  submission time repo_created_after_open would fail (repo must be
+  created after 16:00 UTC) and transcripts from this session would fail
+  thinking_in_window (RULES: "a session that began before that moment
+  cannot be entered as it is... Start a new session once the competition
+  has opened"). The entry text and program below are complete and
+  verified, but the build must be REPEATED in a fresh session after
+  23:00 WIB with a freshly created repo before it can be submitted.
 
 ## Not done here (main agent)
 
